@@ -1,19 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Session Test</title>
+<?php include_once('shared/header.php')?>
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-</head>
-<body>
-    <div class="page-header">
-        <div class="container">
-            <h1>Session Tester</h1>
-        </div>
-    </div>
-</body>
-</html>
+    <?php if(!isset($_SESSION['username'])): ?>
+        <form action="includes/inc.login.php" method="POST">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" name="login" class="btn btn-primary">Login</button>
+        </form>
+    <?php else: ?>
+
+        <form action="includes/inc.logout.php" method="POST">
+            <button type="submit" name="logout" class="btn btn-primary">Logout</button>
+        </form>
+
+    <?php endif; ?>
+
+<?php include_once('shared/footer.php')?>
+
+            
+        
